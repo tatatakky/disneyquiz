@@ -42,11 +42,10 @@ def callback():
 def handle_message(event):
     url=random_image()
     line_bot_api.reply_message(event.reply_token,
-    TextSendMessage(text=event.message.text))
-    # ImageSendMessage(
-    # original_content_url=url,
-    # preview_image_url=url)
-    # )
+    ImageSendMessage(
+    original_content_url=url,
+    preview_image_url=url)
+    )
 
 if __name__ == "__main__":
     app.run()
