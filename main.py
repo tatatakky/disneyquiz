@@ -41,7 +41,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     url=random_image()
-    if message is "pass":
+    if event.message.text is "pass":
         pass
     else:
         line_bot_api.reply_message(event.reply_token,
