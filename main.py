@@ -41,11 +41,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     url=random_image()
-    line_bot_api.reply_message(event.reply_token,
-    ImageSendMessage(
-    original_content_url=url,
-    preview_image_url=url)
-    )
+    if message is "pass":
+        pass
+    else:
+        line_bot_api.reply_message(event.reply_token,
+        ImageSendMessage(
+        original_content_url=url,
+        preview_image_url=url)
+        )
 
 if __name__ == "__main__":
     app.run()
