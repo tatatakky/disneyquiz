@@ -45,6 +45,7 @@ def handle_message(event):
     global flag
     global QData
     global AnsData
+    global count
     flag+=1
     count+=1
         # else:
@@ -92,17 +93,17 @@ def handle_message(event):
     )
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
         line_bot_api.reply_message(event.reply_token,
-        TextSendMessage(text=Solve(event.message.text[-1:],QData[5]))
+        TextSendMessage(text=Solve(event.message.text,QData))
         )
-    flag=0
-    count=0
+        flag=0
+        count=0
 
     else:
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=event.message.text)
         )
-    flag=0
-    count=0
+        flag=0
+        count=0
 
 
 if __name__ == "__main__":
