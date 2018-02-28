@@ -51,13 +51,13 @@ def handle_message(event):
     #     original_content_url=url,
     #     preview_image_url=url)
     #     )
-    print(flag)
+    # print(flag)
     if flag==1:
         QData=ChooseQustion()
         flag+=1
     else:
         pass
-    print(flag)
+    # print(flag)
 
     if event.message.text == "quiz":
         line_bot_api.reply_message(event.reply_token,
@@ -94,7 +94,7 @@ def handle_message(event):
         )
         flag+=1
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
-        if flag>=4:
+        if flag==4:
             line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text=Solve(event.message.text,QData[5]))
             )
