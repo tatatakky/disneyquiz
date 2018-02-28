@@ -95,16 +95,10 @@ def handle_message(event):
             )
         )
     )
-    elif event.message.text == "ディズニーランド":
-        line_bot_api.reply_message(event.reply_token,
-        TextSendMessage(text="http://www.tokyodisneyresort.jp/tdl/")
-        )
-        flag=0
     else:
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=event.message.text)
         )
-        flag=0
 
 
 if __name__ == "__main__":
