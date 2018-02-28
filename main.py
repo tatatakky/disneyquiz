@@ -22,6 +22,7 @@ def hello_world():
     return "hello world!"
 
 flag=0
+count=0
 @app.route("/callback", methods=['POST'])
 def callback():
     global count
@@ -45,19 +46,18 @@ def handle_message(event):
     global QData
     global AnsData
     flag+=1
+    count+=1
         # else:
     #     line_bot_api.reply_message(event.reply_token,
     #     ImageSendMessage(
     #     original_content_url=url,
     #     preview_image_url=url)
     #     )
+    if count==1:
+        QData=ChooseQustion()
+    else:
+        pass
     if event.message.text == "quiz":
-        flag+=1
-        if flag==2:
-            LineNum=len(open('disney_quiz.txt').readlines())
-            QData = linecache.getline('disney_quiz.txt', random.randint(1,LineNum)).replace('\n','').split("    ")
-        else:
-            pass
         line_bot_api.reply_message(event.reply_token,
             TemplateSendMessage(
             alt_text='Buttons template',
@@ -94,12 +94,15 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=Solve(event.message.text[-1:],QData[5]))
         )
-        flag=0
+    flag=0
+    count=0
+
     else:
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=event.message.text)
         )
-        flag=0
+    flag=0
+    count=0
 
 
 if __name__ == "__main__":
