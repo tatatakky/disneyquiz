@@ -22,7 +22,6 @@ def hello_world():
     return "hello world!"
 
 flag=0
-QData=[]
 @app.route("/callback", methods=['POST'])
 def callback():
     global count
@@ -44,6 +43,7 @@ def callback():
 def handle_message(event):
     global flag
     global QData
+    global AnsData
     flag+=1
         # else:
     #     line_bot_api.reply_message(event.reply_token,
@@ -56,6 +56,7 @@ def handle_message(event):
         if flag==2:
             LineNum=len(open('disney_quiz.txt').readlines())
             QData = linecache.getline('disney_quiz.txt', random.randint(1,LineNum)).replace('\n','').split("    ")
+            AnsData=QData[5]
         else:
             pass
         line_bot_api.reply_message(event.reply_token,
@@ -92,7 +93,7 @@ def handle_message(event):
     )
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
         line_bot_api.reply_message(event.reply_token,
-        TextSendMessage(text=Solve(event.message.text[-1:],QData[5]))
+        TextSendMessage(text=Solve(event.message.text[-1:],AnsData))
         )
         flag=0
     else:
