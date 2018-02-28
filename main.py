@@ -22,7 +22,6 @@ def hello_world():
     return "hello world!"
 
 flag=0
-count=0
 @app.route("/callback", methods=['POST'])
 def callback():
     global count
@@ -42,22 +41,24 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    global flag
     global QData
-    global AnsData
-    global count
+    global flag
     flag+=1
-    count+=1
+    # print(count)
         # else:
     #     line_bot_api.reply_message(event.reply_token,
     #     ImageSendMessage(
     #     original_content_url=url,
     #     preview_image_url=url)
     #     )
-    if count==1:
+    print(flag)
+    if flag==1:
         QData=ChooseQustion()
+        flag+=1
     else:
         pass
+    print(flag)
+
     if event.message.text == "quiz":
         line_bot_api.reply_message(event.reply_token,
             TemplateSendMessage(
@@ -87,24 +88,27 @@ def handle_message(event):
                         text='Chose 4',
                         data='action=buy&itemid=1'
                         ),
-                ]
+                    ]
+                )
             )
         )
-    )
+        flag+=1
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
-        line_bot_api.reply_message(event.reply_token,
-        TextSendMessage(text=Solve(event.message.text,QData))
-        )
+        if flag==4:
+            line_bot_api.reply_message(event.reply_token,
+            TextSendMessage(text=Solve(event.message.text,QData[5]))
+            )
+        else:
+            line_bot_api.reply_message(event.reply_token,
+            TextSendMessage(text="押しすぎだよ、、")
+            )
         flag=0
-        count=0
 
     else:
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=event.message.text)
         )
         flag=0
-        count=0
-
 
 if __name__ == "__main__":
     app.run()
