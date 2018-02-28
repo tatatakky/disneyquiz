@@ -51,13 +51,7 @@ def handle_message(event):
     #     original_content_url=url,
     #     preview_image_url=url)
     #     )
-
-    if event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
-        line_bot_api.reply_message(event.reply_token,
-        TextSendMessage(text=Solve(event.message.text[-1:],QData[5]))
-        )
-        flag=0
-    elif event.message.text == "quiz":
+    if event.message.text == "quiz":
         flag+=1
         if flag==2:
             LineNum=len(open('disney_quiz.txt').readlines())
@@ -96,10 +90,16 @@ def handle_message(event):
             )
         )
     )
+    elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
+        line_bot_api.reply_message(event.reply_token,
+        TextSendMessage(text=Solve(event.message.text[-1:],QData[5]))
+        )
+        flag=0
     else:
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=event.message.text)
         )
+        flag=0
 
 
 if __name__ == "__main__":
