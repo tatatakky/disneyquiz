@@ -22,6 +22,7 @@ def hello_world():
     return "hello world!"
 
 flag=0
+QData=[]
 @app.route("/callback", methods=['POST'])
 def callback():
     global count
@@ -53,10 +54,10 @@ def handle_message(event):
 
     if event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
         line_bot_api.reply_message(event.reply_token,
-        TextSendMessage(text=Solve(event.message.text[-1:],QData))
+        TextSendMessage(text=Solve(event.message.text[-1:],QData[5]))
         )
         flag=0
-    elif event.message.text == "Ayano" or event.message.text == "Kodai":
+    elif event.message.text == "quiz":
         flag+=1
         if flag==2:
             LineNum=len(open('disney_quiz.txt').readlines())
@@ -67,27 +68,27 @@ def handle_message(event):
             TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
-                thumbnail_image_url=IMG(QData),
+                thumbnail_image_url=QData[6],
                 title="ミッキーからの質問",
-                text=Question(QData),
+                text=QData[0],
                 actions=[
                     PostbackTemplateAction(
-                        label="1." + Choices_1(QData),
+                        label="1." + QData[1],
                         text='Chose 1',
                         data='action=buy&itemid=1'
                         ),
                     PostbackTemplateAction(
-                        label="2." + Choices_2(QData),
+                        label="2." + QData[2],
                         text='Chose 2',
                         data='action=buy&itemid=1'
                         ),
                     PostbackTemplateAction(
-                        label="3." + Choices_3(QData),
+                        label="3." + QData[3],
                         text='Chose 3',
                         data='action=buy&itemid=1'
                         ),
                     PostbackTemplateAction(
-                        label="4." + Choices_4(QData),
+                        label="4." + QData[4],
                         text='Chose 4',
                         data='action=buy&itemid=1'
                         ),
