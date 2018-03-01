@@ -93,25 +93,23 @@ def handle_message(event):
             )
         )
         flag+=1
+        print(flag)
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
-        if flag>=4:
+        if flag==4:
             line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text=Solve(event.message.text,QData[5]))
             )
+            print(flag)
         else:
             line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text="押しすぎだよ、、")
             )
         flag=0
     else:
-        if flag>=4:
-            flag=2
-        else:
-            flag=0
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=event.message.text)
         )
-
+        flag=0
 
 if __name__ == "__main__":
     app.run()
