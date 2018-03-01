@@ -61,6 +61,9 @@ def handle_message(event):
 
     if event.message.text == "quiz":
         line_bot_api.reply_message(event.reply_token,
+        TextSendMessage(text="出題！！")
+        )
+        line_bot_api.reply_message(event.reply_token,
             TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
@@ -93,13 +96,13 @@ def handle_message(event):
             )
         )
         flag+=1
-        print(flag)
+        # print(flag)
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
         if flag==4:
             line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text=Solve(event.message.text,QData[5]))
             )
-            print(flag)
+            # print(flag)
         else:
             line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text="押しすぎだよ、、")
