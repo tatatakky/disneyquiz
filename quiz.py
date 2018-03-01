@@ -5,7 +5,7 @@ def ChooseQustion():
     return data
 def Solve(text,D):
     if D == text:
-        return "正解だよ！！"
+        return "正解！！"
     else:
         return "残念。正解は{}だよ！".format(D[-1:])
 # import random

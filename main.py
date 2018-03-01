@@ -14,8 +14,8 @@ from quiz import *
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('ezgPBB2UPeshx6guDRc1RfYTXFd37q1U49JcsrX6zFbYCBj4O7ee/TE2EucseV6ho8bPC9B41t8bFsnfCespYaogG7sSnFS8swWBQnDMSmHmfkG9SPMFgd2FiCNKsxOPKdFyilVCwPhPSL42lH320wdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('f6731cbde7b8c980107dc00a82303764')
+line_bot_api = LineBotApi('******')
+handler = WebhookHandler('*******')
 
 @app.route("/")
 def hello_world():
@@ -45,7 +45,6 @@ def handle_message(event):
     global QData
     global flag
     global count
-    flag+=1
     # print(count)
         # else:
     #     line_bot_api.reply_message(event.reply_token,
@@ -54,7 +53,34 @@ def handle_message(event):
     #     preview_image_url=url)
     #     )
     # print(flag)
-    if flag==1:
+
+
+    {
+    "richMenuId": "{richMenuId}",
+    "size": {
+        "width": 2500,
+        "height": 1686
+        },
+        "selected": false,
+        "areas": [
+            {
+            "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2500,
+                "height": 1686
+            },
+            "action": {
+            "type": "postback"
+            "data": "action=buy&itemid=123"
+            }
+          }
+        ]
+    }
+
+
+
+    if flag==0:
         QData=ChooseQustion()
         flag+=1
     else:
@@ -63,6 +89,8 @@ def handle_message(event):
 
     if event.message.text == "quiz":
         line_bot_api.reply_message(event.reply_token,
+        [
+            TextSendMessage(text="問題だよ！！"),
             TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
@@ -93,11 +121,12 @@ def handle_message(event):
                     ]
                 )
             )
+        ]
         )
-        flag+=1
+        flag=1
+        count=1
         # print(flag)
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
-        count+=1
         if count==1:
             line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text=Solve(event.message.text,QData[5]))
@@ -105,15 +134,22 @@ def handle_message(event):
             # print(flag)
         else:
             line_bot_api.reply_message(event.reply_token,
-            TextSendMessage(text="押しすぎだよ、、"),
-            TextSendMessage(text="変態かよ！")
+            TextSendMessage(text="押しすぎだよ、、")
             )
         flag=0
+        count=0
+    elif event.message.text == "ディズニーランド":
+        line_bot_api.reply_message(event.reply_token,
+        TextSendMessage(text="https://www.tokyodisneyresort.jp/")
+        )
+        flag=0
+        count=0
     else:
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=event.message.text)
         )
         flag=0
+        count=0
 
 if __name__ == "__main__":
     app.run()
