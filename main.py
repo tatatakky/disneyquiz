@@ -22,6 +22,7 @@ def hello_world():
     return "hello world!"
 
 flag=0
+count=0
 @app.route("/callback", methods=['POST'])
 def callback():
     global count
@@ -43,6 +44,7 @@ def callback():
 def handle_message(event):
     global QData
     global flag
+    global count
     flag+=1
     # print(count)
         # else:
@@ -95,14 +97,16 @@ def handle_message(event):
         flag+=1
         # print(flag)
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
-        if flag==4:
+        count+=1
+        if count==1:
             line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text=Solve(event.message.text,QData[5]))
             )
             # print(flag)
         else:
             line_bot_api.reply_message(event.reply_token,
-            TextSendMessage(text="押しすぎだよ、、")
+            TextSendMessage(text="押しすぎだよ、、"),
+            TextSendMessage(text="変態かよ！")
             )
         flag=0
     else:
