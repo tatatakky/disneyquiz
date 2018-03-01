@@ -61,7 +61,6 @@ def handle_message(event):
 
     if event.message.text == "quiz":
         line_bot_api.reply_message(event.reply_token,
-            TextSendMessage(text="出題！！")
             TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
