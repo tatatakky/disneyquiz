@@ -11,12 +11,11 @@ from linebot.models import (
 )
 from random_select import random_image
 from quiz import *
-from numpy.random import *
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('*******')
-handler = WebhookHandler('*******')
+line_bot_api = LineBotApi('ezgPBB2UPeshx6guDRc1RfYTXFd37q1U49JcsrX6zFbYCBj4O7ee/TE2EucseV6ho8bPC9B41t8bFsnfCespYaogG7sSnFS8swWBQnDMSmHmfkG9SPMFgd2FiCNKsxOPKdFyilVCwPhPSL42lH320wdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('af3324b8bff6ee5c95c354a0e2043b21')
 
 @app.route("/")
 def hello_world():
@@ -106,11 +105,10 @@ def handle_message(event):
             ])
             # print(flag)
         else:
-            rep=['本当にいいの？','絶対に？','え、本当にそれで？']
-            rnd=randint(3)
+            rep=random.choice(['本当にいいの？','絶対に？','え、本当にそれで？'])
             line_bot_api.reply_message(event.reply_token,
             [
-                TextSendMessage(text=rep[rnd]),
+                TextSendMessage(text=rep),
                 StickerSendMessage(
                     package_id=2,
                     sticker_id=175
