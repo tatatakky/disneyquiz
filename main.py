@@ -11,6 +11,7 @@ from linebot.models import (
 )
 from random_select import random_image
 from quiz import *
+from numpy.random import *
 
 app = Flask(__name__)
 
@@ -106,7 +107,7 @@ def handle_message(event):
             # print(flag)
         else:
             rep=['本当にいいの？','絶対に？','え、本当にそれで？']
-            rnd=random.randint(1,3)
+            rnd=randint(3)
             line_bot_api.reply_message(event.reply_token,
             [
                 TextSendMessage(text=rep[rnd]),
