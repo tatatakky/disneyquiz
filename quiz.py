@@ -1,7 +1,10 @@
 import linecache,random
 def ChooseQustion():
+    data=[]
     LineNum=len(open('disney_quiz.txt').readlines())
-    data = linecache.getline('disney_quiz.txt', random.randint(1,LineNum)).replace('\n','').split("    ")
+    mojiretsu = linecache.getline('disney_quiz.txt', random.randint(1,LineNum)).replace('\n','').split("    ")
+    for i in range(len(mojiretsu)):
+        data.append(mojiretsu[i])
     return data
 def Solve(text,D):
     if D == text:

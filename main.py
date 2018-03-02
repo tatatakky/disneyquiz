@@ -118,6 +118,7 @@ def handle_message(event):
             ])
         flag=0
         count=0
+
     elif event.message.text == "ディズニー":
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text="https://www.tokyodisneyresort.jp/")
