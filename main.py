@@ -7,15 +7,15 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction,StickerMessage
+    MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction, StickerMessage, StickerSendMessage
 )
 from random_select import random_image
 from quiz import *
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('******')
-handler = WebhookHandler('*******')
+line_bot_api = LineBotApi('ezgPBB2UPeshx6guDRc1RfYTXFd37q1U49JcsrX6zFbYCBj4O7ee/TE2EucseV6ho8bPC9B41t8bFsnfCespYaogG7sSnFS8swWBQnDMSmHmfkG9SPMFgd2FiCNKsxOPKdFyilVCwPhPSL42lH320wdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('f6731cbde7b8c980107dc00a82303764')
 
 @app.route("/")
 def hello_world():
@@ -45,40 +45,6 @@ def handle_message(event):
     global QData
     global flag
     global count
-    # print(count)
-        # else:
-    #     line_bot_api.reply_message(event.reply_token,
-    #     ImageSendMessage(
-    #     original_content_url=url,
-    #     preview_image_url=url)
-    #     )
-    # print(flag)
-
-
-    {
-    "richMenuId": "{richMenuId}",
-    "size": {
-        "width": 2500,
-        "height": 1686
-        },
-        "selected": false,
-        "areas": [
-            {
-            "bounds": {
-                "x": 0,
-                "y": 0,
-                "width": 2500,
-                "height": 1686
-            },
-            "action": {
-            "type": "postback"
-            "data": "action=buy&itemid=123"
-            }
-          }
-        ]
-    }
-
-
 
     if flag==0:
         QData=ChooseQustion()
@@ -128,9 +94,15 @@ def handle_message(event):
         # print(flag)
     elif event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4":
         if count==1:
+            s=Solve(event.message.text,QData[5])
             line_bot_api.reply_message(event.reply_token,
-            TextSendMessage(text=Solve(event.message.text,QData[5]))
-            )
+            [
+            TextSendMessage(text=s[0]),
+            StickerSendMessage(
+                package_id=1,
+                sticker_id=s[1]
+                )
+            ])
             # print(flag)
         else:
             line_bot_api.reply_message(event.reply_token,
@@ -138,7 +110,7 @@ def handle_message(event):
             )
         flag=0
         count=0
-    elif event.message.text == "ディズニーランド":
+    elif event.message.text == "ディズニー":
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text="https://www.tokyodisneyresort.jp/")
         )

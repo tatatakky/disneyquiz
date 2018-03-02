@@ -5,9 +5,9 @@ def ChooseQustion():
     return data
 def Solve(text,D):
     if D == text:
-        return "正解！！"
+        return "正解！！", 125
     else:
-        return "残念。正解は{}だよ！".format(D[-1:])
+        return "残念。正解は{}だよ！".format(D[-1:]), 131
 # import random
 # def random_image():
 #     lines=[line.replace('\n','') for line in open('jeongyeon_image.txt','r')]
