@@ -105,9 +105,16 @@ def handle_message(event):
             ])
             # print(flag)
         else:
+            rep=['本当にいいの？','絶対に？','え、本当にそれで？']
+            rnd=random.randint(1,3)
             line_bot_api.reply_message(event.reply_token,
-            TextSendMessage(text="押しすぎだよ、、")
-            )
+            [
+                TextSendMessage(text=rep[rnd]),
+                StickerSendMessage(
+                    package_id=2,
+                    sticker_id=175
+                    )
+            ])
         flag=0
         count=0
     elif event.message.text == "ディズニー":
