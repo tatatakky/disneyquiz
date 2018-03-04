@@ -103,7 +103,7 @@ def handle_message(event):
                 sticker_id=s[1]
                 )
             ])
-            print("count=1の予定 ==> {}".format(flag))
+            print("count=1の予定 ==> {}".format(count))
         else:
             rep=random.choice(['本当にいいの？','絶対に？','え、本当にそれで？'])
             line_bot_api.reply_message(event.reply_token,
