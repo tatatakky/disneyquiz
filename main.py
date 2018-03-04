@@ -14,8 +14,8 @@ from quiz import *
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('********')
-handler = WebhookHandler('********')
+line_bot_api = LineBotApi('ezgPBB2UPeshx6guDRc1RfYTXFd37q1U49JcsrX6zFbYCBj4O7ee/TE2EucseV6ho8bPC9B41t8bFsnfCespYaogG7sSnFS8swWBQnDMSmHmfkG9SPMFgd2FiCNKsxOPKdFyilVCwPhPSL42lH320wdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('af3324b8bff6ee5c95c354a0e2043b21')
 
 @app.route("/")
 def hello_world():
@@ -103,7 +103,7 @@ def handle_message(event):
                 sticker_id=s[1]
                 )
             ])
-            # print(flag)
+            print("count=1の予定{}".format(flag))
         else:
             rep=random.choice(['本当にいいの？','絶対に？','え、本当にそれで？'])
             line_bot_api.reply_message(event.reply_token,
