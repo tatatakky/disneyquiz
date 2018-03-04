@@ -92,33 +92,29 @@ def handle_message(event):
         flag=1
         count=1
         # print(flag)
-        
-    elif (event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4") and count==1:
-        s=Solve(event.message.text,QData[5])
-        line_bot_api.reply_message(event.reply_token,
-        [
+    elif (event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4"):
+        if count==1:
+            s=Solve(event.message.text,QData[5])
+            line_bot_api.reply_message(event.reply_token,
+            [
             TextSendMessage(text=s[0]),
             StickerSendMessage(
-            package_id=1,
-            sticker_id=s[1]
-            )
-        ])
-        print("count=1の予定 ==> {}".format(count))
-        flag=0
-        count=0
-
-    elif (event.message.text == "Chose 1" or event.message.text == "Chose 2" or event.message.text == "Chose 3" or event.message.text == "Chose 4") and count!=1:
-        s=Solve(event.message.text,QData[5])
-        rep=random.choice(['本当にいいの？','絶対に？','え、本当にそれで？'])
-        line_bot_api.reply_message(event.reply_token,
-        [
-            TextSendMessage(text=rep),
-            StickerSendMessage(
-            package_id=2,
-            sticker_id=175
-            )
-        ])
-        print("count=1の予定 ==> {}".format(flag))
+                package_id=1,
+                sticker_id=s[1]
+                )
+            ])
+            print("count==1の予定 ==> {}".format(count))
+        else:
+            rep=random.choice(['本当にいいの？','絶対に？','え、本当にそれで？'])
+            line_bot_api.reply_message(event.reply_token,
+            [
+                TextSendMessage(text=rep),
+                StickerSendMessage(
+                    package_id=2,
+                    sticker_id=175
+                    )
+            ])
+            print("count!=1の予定 ==> {}".format(flag))
         flag=0
         count=0
 
