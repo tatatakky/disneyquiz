@@ -11,6 +11,10 @@ def Solve(text,D):
         return "正解！！", 125
     else:
         return "残念。正解は{}だよ！".format(D[-1:]), 131
+def Usage():
+    text="ボタンを押してみよう！\nリトルグリーンメン: Quizができるよ！\nミニー: ディズニー公式のtwitterが見られるよ！\n プーさん: ディズニーの公式サイトが見られるよ！\nミッキーの手: 運勢を占えるよ！\nサリー＆マイク: ディズニー公式のInstagramが見られるよ！"
+    return text
+
 # import random
 # def random_image():
 #     lines=[line.replace('\n','') for line in open('jeongyeon_image.txt','r')]

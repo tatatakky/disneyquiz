@@ -53,7 +53,7 @@ def handle_message(event):
         pass
     # print(flag)
 
-    if event.message.text == "quiz":
+    if event.message.text == "Quiz!!":
         line_bot_api.reply_message(event.reply_token,
         [
             TextSendMessage(text="問題だよ！！"),
@@ -124,6 +124,36 @@ def handle_message(event):
         )
         flag=0
         count=0
+
+    elif event.message.text == "Usage":
+        line_bot_api.reply_message(event.reply_token,
+        TextSendMessage(text=Usage())
+        )
+        flag=0
+        count=0
+
+    elif event.message.text = "Instagramが見たいよ！！":
+        line_bot_api.reply_message(event.reply_token,
+        TextSendMessage(text="https://www.instagram.com/tokyodisneyresort_official/?hl=ja")
+        )
+        flag=0
+        count=0
+
+    elif event.message.text = "Twitterが見たいよ！！":
+        line_bot_api.reply_message(event.reply_token,
+        TextSendMessage(text="https://twitter.com/tdr_pr")
+        )
+        flag=0
+        count=0
+
+    elif event.message.text = "運勢を占う！":
+        line_bot_api.reply_message(event.reply_token,
+        TextSendMessage(text="メンテナンス中、、、")
+        # TextSendMessage(text="メンテナンス中、、、")
+        )
+        flag=0
+        count=0
+
     else:
         line_bot_api.reply_message(event.reply_token,
         TextSendMessage(text=event.message.text)
