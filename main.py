@@ -65,22 +65,22 @@ def handle_message(event):
                 text=QData[0],
                 actions=[
                     PostbackTemplateAction(
-                        label="1." + QData[1],
+                        label="(1)" + QData[1],
                         text='Chose 1',
                         data='action=buy&itemid=1'
                         ),
                     PostbackTemplateAction(
-                        label="2." + QData[2],
+                        label="(2)" + QData[2],
                         text='Chose 2',
                         data='action=buy&itemid=1'
                         ),
                     PostbackTemplateAction(
-                        label="3." + QData[3],
+                        label="(3)" + QData[3],
                         text='Chose 3',
                         data='action=buy&itemid=1'
                         ),
                     PostbackTemplateAction(
-                        label="4." + QData[4],
+                        label="(4)" + QData[4],
                         text='Chose 4',
                         data='action=buy&itemid=1'
                         ),
