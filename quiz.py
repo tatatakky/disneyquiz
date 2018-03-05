@@ -12,7 +12,7 @@ def Solve(text,D):
     else:
         return "残念。正解は{}だよ！".format(D[-1:]), 131
 def Usage():
-    text="ボタンを押してみよう！\nリトルグリーンメン: Quizができるよ！\nミニー: ディズニー公式のtwitterが見られるよ！\n プーさん: ディズニーの公式サイトが見られるよ！\nミッキーの手: 運勢を占えるよ！\nサリー＆マイク: ディズニー公式のInstagramが見られるよ！"
+    text="ボタンを押してみよう！\n\nリトルグリーンメン: Quizができるよ！\n\nミニー: ディズニー公式のtwitterが見られるよ！\n\n プーさん: ディズニーの公式サイトが見られるよ！\n\nミッキーの手: 運勢を占えるよ！\n\nサリー＆マイク: ディズニー公式のInstagramが見られるよ！"
     return text
 
 # import random
