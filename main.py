@@ -147,10 +147,14 @@ def handle_message(event):
         count=0
 
     elif event.message.text == "占う！！":
+        info=Uranai()
         line_bot_api.reply_message(event.reply_token,
         [
         TextSendMessage(text="今日のラッキーディズニーキャラクターは、、、"),
-        TextSendMessage(text=Uranai())
+        TextSendMessage(text=info[0]+"だよ！！")
+        image_message = ImageSendMessage(
+            original_content_url=info[1],
+            preview_image_url=info[1])
         ])
         flag=0
         count=0

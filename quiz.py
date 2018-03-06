@@ -15,9 +15,13 @@ def Usage():
     text="ボタンを押してみよう！\n\n<リトルグリーンメン>\nQuizができるよ！\n\n<ミニー>\nディズニー公式のtwitterが見られるよ！\n\n<プーさん>\nディズニーの公式サイトが見られるよ！\n\n<ミッキーの手>\n占いができるよ！\n\n<サリー＆マイク>\nディズニー公式のInstagramが見られるよ！\n"
     return text
 def Uranai():
-    character=['ミッキー','ミニー','ドナルド','デイジー','チップ','デール']
-    rnd=random.choice(character)
-    return rnd
+    d={
+      'ミッキー':'https://pics.prcm.jp/16fdd6c0cd5c2/74326233/png/74326233.png',
+      'ミニー':'https://pics.prcm.jp/ebb62e71080b4/74370259/png/74370259.png',
+      'プルート':'https://pics.prcm.jp/f1b7482dbf870/74042413/jpeg/74042413.jpeg'
+    }
+    chara = random.choice(list(d.keys()))
+    return chara,d[chara]
 
 # import random
 # def random_image():
