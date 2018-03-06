@@ -146,7 +146,7 @@ def handle_message(event):
         flag=0
         count=0
 
-    elif event.message.text == "アトラクションを決めて！！":
+    elif event.message.text == "占う！！":
         line_bot_api.reply_message(event.reply_token,
         [
         TextSendMessage(text="今日のラッキーディズニーキャラクターは、、、"),
