@@ -12,8 +12,12 @@ def Solve(text,D):
     else:
         return "残念。正解は{}だよ！".format(D[-1:]), 131
 def Usage():
-    text="ボタンを押してみよう！\n\n<リトルグリーンメン>\nQuizができるよ！\n\n<ミニー>\nディズニー公式のtwitterが見られるよ！\n\n<プーさん>\nディズニーの公式サイトが見られるよ！\n\n<ミッキーの手>\nアトラクションを選んでくれるよ！\n\n<サリー＆マイク>\nディズニー公式のInstagramが見られるよ！\n"
+    text="ボタンを押してみよう！\n\n<リトルグリーンメン>\nQuizができるよ！\n\n<ミニー>\nディズニー公式のtwitterが見られるよ！\n\n<プーさん>\nディズニーの公式サイトが見られるよ！\n\n<ミッキーの手>\n占いができるよ！\n\n<サリー＆マイク>\nディズニー公式のInstagramが見られるよ！\n"
     return text
+def Uranai():
+    character=['ミッキー','ミニー','ドナルド','デイジー','チップ','デール']
+    rnd=random.choice(character)
+    return rnd
 
 # import random
 # def random_image():
