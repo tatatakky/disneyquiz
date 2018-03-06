@@ -152,7 +152,7 @@ def handle_message(event):
         [
         TextSendMessage(text="今日のラッキーディズニーキャラクターは、、、"),
         TextSendMessage(text=info[0]+"だよ！！")
-        image_message = ImageSendMessage(
+        ImageSendMessage(
             original_content_url=info[1],
             preview_image_url=info[1])
         ])
