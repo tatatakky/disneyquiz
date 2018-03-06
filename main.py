@@ -14,8 +14,8 @@ from quiz import *
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('*******')
-handler = WebhookHandler('*******')
+line_bot_api = LineBotApi('ezgPBB2UPeshx6guDRc1RfYTXFd37q1U49JcsrX6zFbYCBj4O7ee/TE2EucseV6ho8bPC9B41t8bFsnfCespYaogG7sSnFS8swWBQnDMSmHmfkG9SPMFgd2FiCNKsxOPKdFyilVCwPhPSL42lH320wdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('af3324b8bff6ee5c95c354a0e2043b21')
 
 @app.route("/")
 def hello_world():
@@ -149,8 +149,8 @@ def handle_message(event):
     elif event.message.text == "アトラクションを決めて！！":
         line_bot_api.reply_message(event.reply_token,
         [
-        TextSendMessage(text="メンテナンス中、、、")
-        # TextSendMessage(text="メンテナンス中、、、")
+        　　　　TextSendMessage(text="今日のラッキーディズニーキャラクターは、、、")
+        　　　　TextSendMessage(text=Uranai())
         ]
         )
         flag=0
