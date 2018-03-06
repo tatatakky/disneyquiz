@@ -149,10 +149,9 @@ def handle_message(event):
     elif event.message.text == "アトラクションを決めて！！":
         line_bot_api.reply_message(event.reply_token,
         [
-        　　　　TextSendMessage(text="今日のラッキーディズニーキャラクターは、、、"),
-        　　　　TextSendMessage(text=Uranai())
-        ]
-        )
+        TextSendMessage(text="今日のラッキーディズニーキャラクターは、、、"),
+        TextSendMessage(text=Uranai())
+        ])
         flag=0
         count=0
 
