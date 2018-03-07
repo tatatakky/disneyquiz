@@ -54,6 +54,8 @@ def handle_message(event):
     # print(flag)
 
     if event.message.text == "Quiz!!":
+        Char = ['シンデレラ','ミッキー','ベル','ジェシー','ミニー','プルート','マックス','ドリー','ニモ','ドナルド','デイジー','チップ','デール','グーフィー','マイク','サリー','ウッディ','バズ','オーロラ姫','ピーターパン','アリエル','ラプンツェル','プーさん',]
+
         line_bot_api.reply_message(event.reply_token,
         [
             TextSendMessage(text="問題だよ！！"),
@@ -61,7 +63,7 @@ def handle_message(event):
             alt_text='Buttons template',
             template=ButtonsTemplate(
                 thumbnail_image_url=QData[6],
-                title="ミッキーからの質問",
+                title=random.choice(Char)+"からの質問",
                 text=QData[0],
                 actions=[
                     PostbackTemplateAction(
