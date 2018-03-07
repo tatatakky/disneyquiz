@@ -63,7 +63,7 @@ def handle_message(event):
             alt_text='Buttons template',
             template=ButtonsTemplate(
                 thumbnail_image_url=QData[6],
-                title=+rnd+"からの質問",
+                title=rnd+"からの質問",
                 text=QData[0],
                 actions=[
                     PostbackTemplateAction(
